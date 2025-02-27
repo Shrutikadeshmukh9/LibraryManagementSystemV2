@@ -25,7 +25,7 @@ class BookListView(generics.ListAPIView):
 class BookCreateView(generics.CreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    authentication_classes = [JWTAuthentication]
+    
     permission_classes = [permissions.IsAdminUser]  # Admin-only access
 
 
