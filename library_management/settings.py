@@ -24,7 +24,8 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-5ouh1l=5@9a6jpu-ed8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'librarymanagementsystemv2.onrender.com']
+
 
 # Remove any empty values and strip spaces/newlines
 ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS if host.strip()]
