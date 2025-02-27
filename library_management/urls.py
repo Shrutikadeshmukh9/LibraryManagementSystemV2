@@ -4,7 +4,9 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 from rest_framework_simplejwt.authentication import JWTAuthentication
+from django.http import HttpResponse
 
+# Swagger Schema View
 schema_view = get_schema_view(
     openapi.Info(
         title="Library Management System API",
@@ -16,16 +18,21 @@ schema_view = get_schema_view(
     authentication_classes=(JWTAuthentication,),
 )
 
+# Homepage view
+def home(request):
+    return HttpResponse("Library Management System is Live!")
+
+# URL Patterns
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/users/', include('users.urls')),
     path('api/books/', include('books.urls')),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('api/loans/', include('loans.urls')), 
-
+    path('api/loans/', include('loans.urls')),  
+    path('', home, name='home'),  # Added homepage route
 ]
 
-
+# Swagger Security Settings
 swagger_settings = {
     'SECURITY_DEFINITIONS': {
         'Bearer': {
