@@ -7,5 +7,9 @@ class Book(models.Model):
     page_count = models.PositiveIntegerField()
     available = models.BooleanField(default=True)
 
+
+    class Meta:
+        ordering = ['id']
+        
     def __str__(self):
         return self.title
