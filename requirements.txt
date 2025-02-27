@@ -1,5 +1,6 @@
 asgiref==3.8.1
 beautifulsoup4==4.13.3
+dj-database-url==2.3.0
 Django==5.1.6
 django-bootstrap4==24.4
 djangorestframework==3.15.2
@@ -7,6 +8,7 @@ djangorestframework_simplejwt==5.4.0
 drf-yasg==1.21.9
 inflection==0.5.1
 packaging==24.2
+psycopg2-binary==2.9.10
 PyJWT==2.10.1
 pytz==2025.1
 PyYAML==6.0.2
