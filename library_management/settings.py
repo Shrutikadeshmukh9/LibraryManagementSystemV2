@@ -26,6 +26,9 @@ DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
+# Remove any empty values and strip spaces/newlines
+ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS if host.strip()]
+
 print("DEBUG: ALLOWED_HOSTS =", ALLOWED_HOSTS)
 
 
