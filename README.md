@@ -1,18 +1,25 @@
 # 📖 Library Management System
 
-A REST API-based Library Management System where users can search for books, borrow, and return them while administrators manage books and users.
+A **Django REST API-based Library Management System** where users can **search, borrow, and return books**, while administrators manage books and users.
+
+---
 
 ## 📌 Features
-✔️ User authentication using **JWT tokens**  
-✔️ **Role-based access control** (Admin & Users)  
-✔️ **Book management** (CRUD operations by admin)  
+✔️ **User authentication using JWT tokens**  
+✔️ **Role-based access control (Admin & Users)**  
+✔️ **Book management** (CRUD operations by Admin)  
 ✔️ **Book borrowing & returning** (Users can borrow and return books)  
 ✔️ **Search & Pagination** for books  
 ✔️ **Swagger API Documentation**  
-✔️ **Unit Testing** for models and views  
-✔️ **Deployment-ready** with Docker and Render  
+✔️ **Unit Testing for models and views**  
+✔️ **Secure against CSRF, XSS, SQL Injection**  
+✔️ **Containerized with Docker**  
+✔️ **Deployed on Render**  
+
+---
 
 ## 📂 Project Structure
+
 ```
 LibraryManagementSystemV2/
 │── library_management/   # Main project folder
@@ -47,13 +54,17 @@ LibraryManagementSystemV2/
 │── Dockerfile            # Docker setup for deployment
 ```
 
+---
+
 ## 🛠 Technologies Used
 - **Backend**: Django, Django REST Framework  
-- **Database**: PostgreSQL (for production), SQLite (for development)  
+- **Database**: PostgreSQL (Production), SQLite (Development)  
 - **Authentication**: JWT (JSON Web Tokens)  
 - **API Documentation**: Swagger (drf-yasg)  
 - **Containerization**: Docker  
 - **Deployment**: Render  
+
+---
 
 ## 🚀 Installation & Setup
 
@@ -88,30 +99,52 @@ python manage.py runserver
 ```
 API will be available at: `http://127.0.0.1:8000/`
 
+---
+
 ## 📡 API Endpoints
-| Method | Endpoint | Description | Access |
-|--------|----------|------------|--------|
-| **POST** | `/users/register/` | Register a new user | Public |
-| **POST** | `/users/login/` | Login and get JWT token | Public |
-| **GET** | `/api/books/` | View all books | Public |
-| **POST** | `/api/books/add/` | Add a new book | Admin Only |
-| **DELETE** | `/api/books/{id}/delete/` | Delete a book | Admin Only |
-| **POST** | `/api/loans/borrow/` | Borrow a book | Authenticated Users |
-| **PUT** | `/api/loans/return/{id}/` | Return a book | Authenticated Users |
+
+### **📚 Books**
+| Method  | Endpoint                     | Description                    | Access             |
+|---------|------------------------------|--------------------------------|--------------------|
+| **GET**  | `/api/books/`               | View all books                 | Public            |
+| **POST** | `/api/books/add/`           | Add a new book                 | Admin Only        |
+| **GET**  | `/api/books/{id}/`          | Get details of a specific book | Public            |
+| **DELETE** | `/api/books/{id}/delete/` | Delete a book                  | Admin Only        |
+| **PUT**  | `/api/books/{id}/update/`   | Update book details            | Admin Only        |
+| **PATCH** | `/api/books/{id}/update/`  | Partial update for a book      | Admin Only        |
+
+### **📖 Loans**
+| Method  | Endpoint                     | Description                    | Access             |
+|---------|------------------------------|--------------------------------|--------------------|
+| **POST** | `/api/loans/borrow/`        | Borrow a book                  | Authenticated Users |
+| **POST** | `/api/loans/return/{book_id}/` | Return a borrowed book     | Authenticated Users |
+
+### **👤 Users**
+| Method  | Endpoint                     | Description                    | Access             |
+|---------|------------------------------|--------------------------------|--------------------|
+| **POST** | `/users/login/`             | Login and get JWT token        | Public            |
+| **POST** | `/users/register/`          | Register a new user            | Public            |
+| **POST** | `/users/token/refresh/`     | Refresh access token           | Authenticated Users |
+
+---
 
 ## 🔐 Authentication
 - **JWT-based authentication** is used.
 - Use `/users/login/` to get the access token.
 - Pass the token in requests:  
-  ```
+  ```sh
   Authorization: Bearer <your_access_token>
   ```
+
+---
 
 ## 📄 Testing
 Run the test suite:
 ```sh
 python manage.py test
 ```
+
+---
 
 ## 📦 Docker Setup
 Run the app in a Docker container:
@@ -120,7 +153,10 @@ docker build -t library-management .
 docker run -p 8000:8000 library-management
 ```
 
+---
+
 ## 🚀 Deploying to Render
+
 ### **1️⃣ Connect GitHub to Render**
 - Go to **[Render](https://dashboard.render.com/)**
 - Click **New Web Service** and connect your GitHub repository.
@@ -150,8 +186,15 @@ docker run -p 8000:8000 library-management
 - Click **Deploy** and wait for the build to finish.
 - Once deployed, visit your app URL!
 
+---
+
 ## 🎯 Future Enhancements
 ✅ User role-based dashboards  
 ✅ Email notifications for due books  
 ✅ Fine management system  
 ✅ Admin analytics panel  
+
+---
+
+
+
